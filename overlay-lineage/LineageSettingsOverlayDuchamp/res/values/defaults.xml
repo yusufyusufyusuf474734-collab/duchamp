@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Enable smooth display (high refresh rate) by default -->
+    <bool name="def_peak_refresh_rate_default">true</bool>
+
+    <!-- Default peak refresh rate -->
+    <integer name="def_peak_refresh_rate">120</integer>
+
+    <!-- Enable adaptive refresh rate by default -->
+    <bool name="def_min_refresh_rate_default">true</bool>
+
+    <!-- Default minimum refresh rate (allow dropping to 60Hz when idle) -->
+    <integer name="def_min_refresh_rate">60</integer>
+
+    <!-- Enable high touch polling rate by default -->
+    <bool name="def_high_touch_polling_rate_default">true</bool>
+
+    <!-- Enable high touch sensitivity by default -->
+    <bool name="def_high_touch_sensitivity_default">true</bool>
+</resources>

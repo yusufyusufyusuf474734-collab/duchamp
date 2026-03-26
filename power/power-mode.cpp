@@ -41,15 +41,27 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE: {
             int fd = open(TOUCH_DEV_PATH, O_RDWR);
+            if (fd < 0) {
+                LOG(ERROR) << "Failed to open " << TOUCH_DEV_PATH << " for DOUBLE_TAP_TO_WAKE";
+                return false;
+            }
             int arg[3] = {TOUCH_ID, TOUCH_DOUBLETAP_MODE, enabled ? 1 : 0};
-            ioctl(fd, TOUCH_IOC_SETMODE, &arg);
+            if (ioctl(fd, TOUCH_IOC_SETMODE, &arg) < 0) {
+                LOG(ERROR) << "ioctl TOUCH_DOUBLETAP_MODE failed";
+            }
             close(fd);
             return true;
         }
         case Mode::DISPLAY_INACTIVE: {
             int fd = open(TOUCH_DEV_PATH, O_RDWR);
+            if (fd < 0) {
+                LOG(ERROR) << "Failed to open " << TOUCH_DEV_PATH << " for DISPLAY_INACTIVE";
+                return false;
+            }
             int arg[3] = {TOUCH_ID, TOUCH_FOD_ENABLE, enabled ? 1 : 0};
-            ioctl(fd, TOUCH_IOC_SETMODE, &arg);
+            if (ioctl(fd, TOUCH_IOC_SETMODE, &arg) < 0) {
+                LOG(ERROR) << "ioctl TOUCH_FOD_ENABLE failed";
+            }
             close(fd);
             return true;
         }

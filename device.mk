@@ -65,7 +65,8 @@ $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_
 
 PRODUCT_PACKAGES += \
     android.hardware.audio.service.mediatek \
-    android.hardware.audio.effect@7.0-impl
+    android.hardware.audio.effect@7.0-impl \
+    android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
     audio.primary.default \
@@ -87,7 +88,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.mediatek
+    android.hardware.bluetooth-service.mediatek \
+    android.hardware.bluetooth.audio-impl
 
 # Bootanimation
 TARGET_SCREEN_WIDTH := 1220
@@ -182,10 +184,12 @@ PRODUCT_PACKAGES += \
    SettingsResOverlayDuchamp \
    SystemUIOverlayDuchamp \
    TelephonyResOverlayDuchamp \
+   TetheringResOverlayDuchamp \
    WifiOverlay
 
 PRODUCT_PACKAGES += \
    LineageApertureOverlayDuchamp \
+   LineageDialerDuchamp \
    LineageSDKOverlayDuchamp \
    LineageSettingsOverlayDuchamp
 
@@ -356,13 +360,19 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
-$(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
+PRODUCT_PACKAGES += \
+    vibratorfeature-wrapper
 
 # Wi-Fi
+$(call soong_config_set_bool,wpa_supplicant_8,board_wlan_mediatek_stability,true)
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     wpa_supplicant
+
+$(call soong_config_set_bool,wpa_supplicant_8,wifi_disable_multi_akm,true)
+
+$(call soong_config_set_bool,wpa_supplicant_8,wifi_disable_multi_akm,true)
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay

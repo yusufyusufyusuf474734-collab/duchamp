@@ -30,5 +30,10 @@ remote_provisioning.hostname=remoteprovisioning.googleapis.com
 # MTE
 ro.arm64.memtag.bootctl_supported=1
 
-# ZRAM writeback
-ro.zram_backing_device_min_free_mb=1536
+# ZRAM writeback - tuned for 8/12GB RAM
+ro.zram_backing_device_min_free_mb=3072
+
+# Perf
+ro.vendor.qti.sys.fw.bservice_enable=true
+ro.vendor.qti.sys.fw.bservice_limit=5
+ro.vendor.qti.sys.fw.bservice_age=5000

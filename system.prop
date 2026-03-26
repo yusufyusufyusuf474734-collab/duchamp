@@ -1,0 +1,25 @@
+#
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Dalvik - tuned for 8/12GB LPDDR5X
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heapgrowthlimit=384m
+dalvik.vm.heapsize=768m
+dalvik.vm.heaptargetutilization=0.6
+dalvik.vm.heapminfree=8m
+dalvik.vm.heapmaxfree=64m
+
+# dex2oat - use all cores for faster compilation
+dalvik.vm.dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.dex2oat-threads=8
+dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.image-dex2oat-threads=8
+
+# Gatekeeper
+ro.hardware.gatekeeper=trusty
+
+# Perf
+ro.vendor.perf.scroll_opt=true
